@@ -1,7 +1,7 @@
 package cn.wecloud.sdk.storage.response;
 
 import cn.wecloud.sdk.common.api.WeCloudResponse;
-import cn.wecloud.sdk.storage.data.UserFileInfo;
+import cn.wecloud.sdk.storage.data.WeCloudStorageUserFileInfo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -15,5 +15,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class WeCloudStorageUploadFileResponse extends WeCloudResponse {
 
-    private UserFileInfo data;
+    private WeCloudStorageUserFileInfo data;
+
 }

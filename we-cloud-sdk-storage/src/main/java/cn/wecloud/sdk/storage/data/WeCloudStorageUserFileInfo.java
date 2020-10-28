@@ -14,7 +14,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class UserFileInfo implements Serializable {
+public class WeCloudStorageUserFileInfo implements Serializable {
     /**
      * 用户文件Id，
      * 用于获取、操作文件

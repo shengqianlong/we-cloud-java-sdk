@@ -1,6 +1,5 @@
 package cn.wecloud.sdk.storage.model;
 
-import cn.wecloud.sdk.common.WeCloudObject;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -10,9 +9,9 @@ import lombok.experimental.Accessors;
  * @since 2020/10/21
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-public class WeCloudUploadFileModel extends WeCloudObject {
+public class WeCloudStorageUploadFileModel extends WeCloudStorageModel {
     /**
      * 用户自定义文件获取id，
      * 获取文件可直接通过该id获取，
@@ -22,9 +21,9 @@ public class WeCloudUploadFileModel extends WeCloudObject {
 
     /**
      * 文件过期时间：
-     * expired < 0 或 expired == null 不过期，
+     * expired 大于 0 或 expired == null 不过期，
      * expired == 0 次日0点过期，
-     * expired > 0 指定天数后0点过期
+     * expired 小于 0 指定天数后0点过期
      */
     private Long expired;
 

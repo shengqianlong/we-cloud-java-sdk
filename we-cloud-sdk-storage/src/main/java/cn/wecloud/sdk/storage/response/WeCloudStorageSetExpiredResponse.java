@@ -8,12 +8,13 @@ import lombok.experimental.Accessors;
 
 /**
  * @author 陈俊雄
- * @since 2020/10/19
+ * @since 2020/10/22
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-public class WeCloudStorageUploadImageResponse extends WeCloudResponse {
+public class WeCloudStorageSetExpiredResponse extends WeCloudResponse {
+
     private WeCloudStorageUserFileInfo data;
 
 }

@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.util.Map;
 
 /**
  * @author 陈俊雄
@@ -22,7 +21,9 @@ public abstract class WeCloudResponse implements Serializable {
 
     private String body;
 
-    private Map<String, String> params;
+    private byte[] bytes;
+
+    // private Map<String, String> params;
 
     public boolean isSuccess() {
         return "0".equals(code);

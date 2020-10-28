@@ -15,6 +15,9 @@ public interface WeCloudParser<T extends WeCloudResponse > {
      */
     T parse(String rsp) throws WeCloudApiException;
 
+
+    T parse(byte[] bytes) throws WeCloudApiException;
+
     /**
      * 获取响应类类型。
      */

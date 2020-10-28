@@ -2,29 +2,36 @@ package cn.wecloud.sdk.storage.request;
 
 import cn.wecloud.sdk.common.FileItem;
 import cn.wecloud.sdk.common.WeCloudObject;
-import cn.wecloud.sdk.common.api.WeCloudUploadRequest;
 import cn.wecloud.sdk.storage.response.WeCloudStorageUploadImageResponse;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.experimental.Accessors;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author 陈俊雄
  * @since 2020/10/19
  **/
-@Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class WeCloudStorageUploadImageRequest implements WeCloudUploadRequest<WeCloudStorageUploadImageResponse> {
+public class WeCloudStorageUploadImageRequest extends WeCloudStorageUploadRequest<WeCloudStorageUploadImageResponse> {
 
     private String apiVersion="0.0.1";
 
     private WeCloudObject params;
 
-    private FileItem fileItem;
+    @Getter
+    private final FileItem fileItem;
+
+    public WeCloudStorageUploadImageRequest(FileItem fileItem) {
+        this.fileItem = fileItem;
+    }
+
+    public WeCloudStorageUploadImageRequest(WeCloudObject params, FileItem fileItem) {
+        this.params = params;
+        this.fileItem = fileItem;
+    }
 
     @Override
     public String getApiMethodName() {
@@ -59,12 +66,5 @@ public class WeCloudStorageUploadImageRequest implements WeCloudUploadRequest<We
     @Override
     public void setParam(WeCloudObject params) {
         this.params = params;
-    }
-
-    @Override
-    public Map<String, FileItem> getFileParams() {
-        final HashMap<String, FileItem> fileParams = new HashMap<>();
-        fileParams.put("file", this.fileItem);
-        return fileParams;
     }
 }

@@ -1,32 +1,23 @@
 package cn.wecloud.sdk.storage.request;
 
-import cn.wecloud.sdk.common.FileItem;
 import cn.wecloud.sdk.common.WeCloudObject;
-import cn.wecloud.sdk.storage.response.WeCloudStorageUploadFileResponse;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
+import cn.wecloud.sdk.storage.response.WeCloudStorageDownloadResponse;
 
 import java.util.Map;
 
 /**
  * @author 陈俊雄
- * @since 2020/10/19
+ * @since 2020/10/22
  **/
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-public class WeCloudStorageUploadFileRequest extends WeCloudStorageUploadRequest<WeCloudStorageUploadFileResponse> {
+public class WeCloudStorageDownloadFileRequest extends WeCloudStorageDownloadRequest<WeCloudStorageDownloadResponse> {
 
     private String apiVersion = "0.0.1";
 
     private WeCloudObject params;
 
-    public WeCloudStorageUploadFileRequest(FileItem fileItem) {
-        this.setFileItem(fileItem);
-    }
-
     @Override
     public String getApiMethodName() {
-        return "we-cloud.storage.upload-file";
+        return "we-cloud.storage.download";
     }
 
     @Override
@@ -45,8 +36,8 @@ public class WeCloudStorageUploadFileRequest extends WeCloudStorageUploadRequest
     }
 
     @Override
-    public Class<WeCloudStorageUploadFileResponse> getResponseClass() {
-        return WeCloudStorageUploadFileResponse.class;
+    public Class<WeCloudStorageDownloadResponse> getResponseClass() {
+        return WeCloudStorageDownloadResponse.class;
     }
 
     @Override
