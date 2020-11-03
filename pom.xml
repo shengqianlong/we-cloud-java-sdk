@@ -43,14 +43,14 @@
 
     <modules>
         <module>we-cloud-sdk-storage</module>
-        <!--<module>we-cloud-sdk-sms</module>-->
+        <module>we-cloud-sdk-sms</module>
         <module>we-cloud-sdk-common</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <httpclient.version>4.5.12</httpclient.version>
-        <lombok.version>1.18.14</lombok.version>
+        <lombok.version>1.18.16</lombok.version>
         <common.version>0.0.1</common.version>
         <sms.version>0.0.1</sms.version>
         <storage.version>0.0.1</storage.version>

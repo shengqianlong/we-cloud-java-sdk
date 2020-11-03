@@ -7,16 +7,60 @@
         <groupId>cn.wecloud</groupId>
         <version>0.0.1</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <version>${sms.version}</version>
     <artifactId>we-cloud-sdk-sms</artifactId>
+    <version>${sms.version}</version>
+    <name>we-cloud-sdk-sms</name>
+
+    <url>https://github.com/shengqianlong/we-cloud-java-sdk</url>
+    <description>WeCloud Java SDK for sms</description>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>license</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>chanjx</id>
+            <name>chanjx</name>
+            <email>7640474@qq.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+8</timezone>
+            <url>https://www.wecloud.cn</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/shengqianlong</url>
+        <connection>https://github.com/shengqianlong/we-cloud-java-sdk.git</connection>
+        <developerConnection>https://github.com/shengqianlong/we-cloud-java-sdk</developerConnection>
+    </scm>
 
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>cn.wecloud</groupId>-->
-            <!--<artifactId>we-cloud-sdk-common</artifactId>-->
-            <!--<version>${common.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>cn.wecloud</groupId>
+            <artifactId>we-cloud-sdk-common</artifactId>
+            <version>${common.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>
