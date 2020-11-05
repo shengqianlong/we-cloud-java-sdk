@@ -40,7 +40,7 @@ implementation("cn.wecloud:we-cloud-sdk-sms:0.0.1")
 <dependency>
   <groupId>cn.wecloud</groupId>
   <artifactId>we-cloud-sdk-sms</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
@@ -59,7 +59,7 @@ import cn.wecloud.sdk.sms.response.WeCloudSmsDomesticSingleSendResponse;
 // 创建连接对象
 final WeCloudSmsClient client = new WeCloudSmsClient("5kXMjmRCdWFqkkds");
 // 创建请求信息对象
-final WeCloudSmsDomesticModel model = new WeCloudSmsDomesticModel("18059273037", "1323474417736716290", "123456");
+final WeCloudSmsDomesticModel model = new WeCloudSmsDomesticModel("phone", "templateId", "verificationCode");
 // 创建请求对象
 final WeCloudSmsDomesticSingleSendRequest request = new WeCloudSmsDomesticSingleSendRequest(model);
 // 执行请求

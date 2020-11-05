@@ -40,7 +40,7 @@ implementation("cn.wecloud:we-cloud-sdk-storage:0.0.1")
 <dependency>
   <groupId>cn.wecloud</groupId>
   <artifactId>we-cloud-sdk-storage</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
