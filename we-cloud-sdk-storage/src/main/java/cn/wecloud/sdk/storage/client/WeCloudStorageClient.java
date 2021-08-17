@@ -21,6 +21,7 @@ import lombok.experimental.Accessors;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -71,7 +72,7 @@ public class WeCloudStorageClient implements WeCloudClient {
     }
 
     @Override
-    public <T extends WeCloudResponse> T execute(WeCloudRequest<T> request) throws WeCloudApiException {
+    public <T extends WeCloudResponse> T execute(WeCloudRequest<T> request) throws WeCloudApiException, URISyntaxException {
 
         final WeCloudParser<T> parser = new ObjectJsonParser<>(request.getResponseClass());
 
@@ -135,7 +136,7 @@ public class WeCloudStorageClient implements WeCloudClient {
             final String result = HttpClientUtils.doPostMultipartForm(
                     uri,
                     httpFile,
-                    uploadFileParams);
+                    uploadFileParams).getBody();
             return parser.parse(result);
         } catch (IOException e) {
             throw new WeCloudApiException("文件上传IO异常！", e);
@@ -251,14 +252,14 @@ public class WeCloudStorageClient implements WeCloudClient {
 
     private <T extends WeCloudResponse> T doPostJson(WeCloudParser<T> parser, Map<String, String> params, String uri) throws WeCloudApiException {
         try {
-            final String result = HttpClientUtils.doPostJson(uri, JsonUtils.obj2JsonNonNull(params));
+            final String result = HttpClientUtils.doPostJson(uri, JsonUtils.obj2JsonNonNull(params)).getBody();
             return parser.parse(result);
         } catch (JsonProcessingException e) {
             throw new WeCloudApiException("Json系列化异常！", e);
         }
     }
 
-    private <T extends WeCloudResponse> T download(WeCloudStorageDownloadRequest<T> request, WeCloudParser<T> parser) throws WeCloudApiException {
+    private <T extends WeCloudResponse> T download(WeCloudStorageDownloadRequest<T> request, WeCloudParser<T> parser) throws WeCloudApiException, URISyntaxException {
         final WeCloudStorageDownloadModel model = (WeCloudStorageDownloadModel) request.getParams();
         final String uri;
         if (model instanceof WeCloudStorageGetCustomImageModel) {
@@ -280,7 +281,7 @@ public class WeCloudStorageClient implements WeCloudClient {
         originalSign += "." + bucketId
                 + "." + model.getContentDisposition();
         query.put("downloadToken", accessKey + "." + DigestUtils.md5Hex(originalSign));
-        final byte[] bytes = HttpClientUtils.doGetByte(uri, query, null);
+        final byte[] bytes = HttpClientUtils.doGet(uri, query, null).getByteBody();
         return parser.parse(bytes);
     }
 }

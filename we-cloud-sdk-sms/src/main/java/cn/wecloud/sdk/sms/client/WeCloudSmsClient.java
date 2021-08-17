@@ -39,7 +39,7 @@ public class WeCloudSmsClient implements WeCloudClient {
             final WeCloudParser<T> parser = new ObjectJsonParser<>(request.getResponseClass());
             WeCloudSmsModel model = (WeCloudSmsModel) request.getParams();
             model.setApiKey(apiKey);
-            final String result = HttpClientUtils.doPostJson(SINGLE_SEND, JsonUtils.obj2Json(request.getParams()));
+            final String result = HttpClientUtils.doPostJson(SINGLE_SEND, JsonUtils.obj2Json(request.getParams())).getBody();
 
             return parser.parse(result);
         } catch (JsonProcessingException e) {
